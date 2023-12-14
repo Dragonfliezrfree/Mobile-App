@@ -22,6 +22,8 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
+
+    if(snapshot.exists()){
     let itemsArray = Object.entries(snapshot.val())
     
     clearShoppingListEl()
@@ -33,6 +35,10 @@ onValue(shoppingListInDB, function(snapshot) {
         
         appendItemToShoppingListEl(currentItem)
     }
+   }   else {
+    shoppingListEl.innerHTML = "No items here...yet"
+   }
+     
 })
 
 function clearShoppingListEl() {
